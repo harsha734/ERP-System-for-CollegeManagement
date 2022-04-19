@@ -1,0 +1,135 @@
+mysql> show tables;
++--------------------+
+| Tables_in_erp      |
++--------------------+
+| admin              |
+| admins             |
+| course             |
+| hibernate_sequence |
+| review             |
+| student            |
+| student_course     |
+| students           |
+| teachers           |
++--------------------+
+
+ desc admin;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| id       | bigint       | NO   | PRI | NULL    | auto_increment |
+| email    | varchar(40)  | YES  |     | NULL    |                |
+| fullname | varchar(255) | NO   |     | NULL    |                |
+| password | varchar(255) | NO   |     | NULL    |                |
+| phone    | varchar(10)  | NO   |     | NULL    |                |
+| username | varchar(20)  | NO   |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+
+
+mysql> desc admins;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| adminid    | bigint       | NO   | PRI | NULL    | auto_increment |
+| adminemail | varchar(255) | YES  |     | NULL    |                |
+| adminname  | varchar(255) | YES  |     | NULL    |                |
+| adminphone | varchar(255) | YES  |     | NULL    |                |
+| adminpwd   | varchar(255) | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+
+
+mysql> desc course;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| id    | int          | NO   | PRI | NULL    |       |
+| name  | varchar(255) | YES  | UNI | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+
+
+mysql> desc hibernate_sequence;
++----------+--------+------+-----+---------+-------+
+| Field    | Type   | Null | Key | Default | Extra |
++----------+--------+------+-----+---------+-------+
+| next_val | bigint | YES  |     | NULL    |       |
++----------+--------+------+-----+---------+-------+
+
+mysql> desc review;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| id          | int          | NO   | PRI | NULL    |       |
+| description | varchar(255) | NO   |     | NULL    |       |
+| rating      | varchar(255) | NO   |     | NULL    |       |
+| course_id   | int          | YES  | MUL | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+
+
+mysql> desc student;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| id       | bigint       | NO   | PRI | NULL    |       |
+| fullname | varchar(255) | NO   |     | NULL    |       |
+| password | varchar(255) | NO   |     | NULL    |       |
+| username | varchar(20)  | NO   |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+
+mysql> desc student_course;
++-----------+--------+------+-----+---------+-------+
+| Field     | Type   | Null | Key | Default | Extra |
++-----------+--------+------+-----+---------+-------+
+| id        | bigint | NO   | MUL | NULL    |       |
+| course_id | int    | NO   | MUL | NULL    |       |
++-----------+--------+------+-----+---------+-------+
+
+
+mysql> desc students;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| id       | int          | NO   | PRI | NULL    |       |
+| fullname | varchar(255) | YES  |     | NULL    |       |
+| password | varchar(255) | YES  |     | NULL    |       |
+| username | varchar(255) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+
+
+mysql> desc teachers;
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| id               | bigint       | NO   | PRI | NULL    | auto_increment |
+| course_name      | varchar(255) | YES  |     | NULL    |                |
+| email            | varchar(40)  | YES  |     | NULL    |                |
+| phone            | varchar(10)  | NO   |     | NULL    |                |
+| teacher_id       | bigint       | YES  | MUL | NULL    |                |
+| tid              | int          | NO   |     | NULL    |                |
+| teacher          | varchar(255) | YES  |     | NULL    |                |
+| teacher_password | varchar(255) | YES  |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+
+mysql> select * from student;
++----+----------+----------+-----------+
+| id | fullname | password | username  |
++----+----------+----------+-----------+
+|  1 | harsha   | cvbn     | zcbnmklop |
+|  2 | Abc      | Abc@123  | xyz       |
++----+----------+----------+-----------+
+mysql> select * from course;
++----+------------+
+| id | name       |
++----+------------+
+|  1 | JavaScript |
++----+------------+
+
+
+
+
+
+mysql> select * from student_course;
++----+-----------+
+| id | course_id |
++----+-----------+
+|  1 |         1 |
++----+-----------+
